@@ -1,0 +1,12 @@
+.col {
+    background-color: peru;
+    border: 1px solid brown;
+    height: 300px;
+    column-gap: 50px;
+}
+.col :hover {
+    font-size: larger;
+}
+.content {
+    text-align: center;
+}
