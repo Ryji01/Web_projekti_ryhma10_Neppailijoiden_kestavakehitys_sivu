@@ -1,46 +1,107 @@
-const questions = [
-  {
-    image: "banana.png",
-    correct: "bio"
-  },
-  {
-    image: "bottle.png",
-    correct: "plastic"
-  },
-  {
-    image: "broken.png",
-    correct: "mixed"
-  }
+const BINS = [
+  { id: 'bio', label: 'Biojäte', icon: '🌳'},
+  { id: 'paper', label: 'Paperi', icon: '📃'},
+  { id: 'plastic', label: 'Muovi', icon: '💿'},
+  { id: 'glass', label: 'Lasi', icon: '🍸'},
+  { id: 'metal', label: 'Metalli', icon: '🔩'},
+  { id: 'mixed', label: 'Sekajäte', icon: '♻️'},
 ];
 
-let current = 0;
-let score = 0;
+const WASTE_ITEMS = [
+  { name: 'Banaaninkuori', emoji: '🍌', bin: 'bio' },
+  { name: 'Sanomalehti', emoji: '📰', bin: 'paper' },
+  { name: 'Muovipullo', emoji: '🍼', bin: 'plastic' },
+  { name: 'Lasipullo', emoji: '🍾', bin: 'glass' },
+  { name: 'Säilyketölkki', emoji: '🥫', bin: 'metal' },
+  { name: 'Vaippa', emoji: '👶', bin: 'mixed' },
+];
 
-function loadQuestion() {
-  document.getElementById("item").src = questions[current].image;
-  document.getElementById("result").textContent = "";
+let state = {
+  current: 0,
+  score: 0,
+  wrong: 0
+};
+
+function startGame() {
+  state.current = 0;
+  state.score = 0;
+  state.wrong = 0;
+  render();
 }
 
-function checkAnswer(choice) {
-  const result = document.getElementById("result");
+function choose(binId) {
+  const item = WASTE_ITEMS[state.current];
 
-  if (choice === questions[current].correct) {
-    result.textContent = "Oikein!";
-    result.style.color = "green";
-    score++;
+  if (item.bin === binId) {
+    state.score++;
   } else {
-    result.textContent = "Väärin!";
-    result.style.color = "red";
+    state.wrong++;
   }
 
-  document.getElementById("score").textContent = "Pisteet: " + score;
+  state.current++;
 
-  current++;
-  if (current < questions.length) {
-    setTimeout(loadQuestion, 1000);
+  if (state.current >= WASTE_ITEMS.length) {
+    endGame();
   } else {
-    result.textContent = "Peli loppui! Pisteet: " + score;
+    render();
   }
 }
 
-loadQuestion();
+function endGame() {
+    // Bisteiden tallennus
+  localStorage.setItem("kierratys_score", state.score);
+  localStorage.setItem("kierratys_wrong", state.wrong);
+
+  document.getElementById('app').innerHTML = `
+    <div class="end-screen">
+      <h2>Loistavaa!</h2>
+      <div class="end-score">${state.score}</div>
+      <div>Väärin: ${state.wrong}</div>
+      <button class="btn-restart" onclick="startGame()">Uudelleen</button>
+    </div>
+  `;
+}
+
+function render() {
+  const item = WASTE_ITEMS[state.current];
+
+  document.getElementById('app').innerHTML = `
+    <div class="header">
+      <h1> Kierrätyspeli</h1>
+    </div>
+
+    <div class="hud">
+      <div class="hud-block">
+        <div class="hud-label">Pisteet</div>
+        <div class="hud-value">${state.score}</div>
+      </div>
+      <div class="hud-block">
+        <div class="hud-label">Kierros</div>
+        <div class="hud-value">${state.current + 1} / ${WASTE_ITEMS.length}</div>
+      </div>
+      <div class="hud-block">
+        <div class="hud-label">Väärin</div>
+        <div class="hud-value">${state.wrong}</div>
+      </div>
+    </div>
+
+    <div class="waste-stage">
+      <div class="waste-card">
+        <div class="waste-emoji">${item.emoji}</div>
+        <div class="waste-name">${item.name}</div>
+      </div>
+    </div>
+
+    <div class="bins-grid">
+      ${BINS.map(b => `
+        <button class="bin-btn" onclick="choose('${b.id}')">
+          <span class="bin-icon">${b.icon}</span>
+          <span class="bin-dot" style="background:${b.dot}"></span>
+          <span class="bin-label">${b.label}</span>
+        </button>
+      `).join('')}
+    </div>
+  `;
+}
+
+startGame();

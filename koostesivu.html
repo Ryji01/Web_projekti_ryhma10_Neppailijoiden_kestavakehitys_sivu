@@ -1,0 +1,25 @@
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <title>Pisteet</title>
+</head>
+<body>
+
+  <h1>Kierrätyspelin tulokset:</h1>
+
+  <p>Pisteet: <span id="jyriscore"></span></p>
+  <p>Väärin: <span id="jyriwrong"></span></p>
+
+  <a href="etusivu.html">Takaisin peliin</a>
+
+  <h1>Peli2 tulokset:</h1>
+
+  <h1>Peli3 tulokset:</h1>
+
+  <script>
+    document.getElementById("jyriscore").textContent = localStorage.getItem("kierratys_score");
+    document.getElementById("jyriwrong").textContent = localStorage.getItem("kierratys_wrong");
+  </script>
+
+</body>
+</html>

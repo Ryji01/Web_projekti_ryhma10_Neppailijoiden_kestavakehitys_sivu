@@ -1,99 +1,80 @@
 <!doctype html>
-<html lang="en">
+<html lang="fi">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>kestava_kehitys_peli1</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="css/stylejyri.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kestävä kehitys - peli</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+  <!-- Oma CSS -->
+  <link rel="stylesheet" href="css/stylejyri.css">
+
+  <!-- Fontti -->
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;900&display=swap" rel="stylesheet">
 </head>
 
-<body>
-    <!-- Jyrin header alkaa tästä -->
-    <nav class="navbar navbar-expand-lg" style="background-color: #1f8e00;"> <!-- headerin väri -->
-        <div class="container-fluid">
-            <i class="bi bi-house-door-fill"></i>
-            <a class="navbar-brand" href="#">Kestävä kehitys</a>
-            <!-- Otsikko, linkki pääsivulle pitää lisätä tähän nappiin -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#"><i class="bi bi-question-circle-fill"></i>
-                            Infosivu</a>
-                        <!-- linkki infosivulle puuttuu -->
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="bi bi-trophy-fill"></i> Kooste</a>
-                        <!-- linkki koostesivulle puuttuu -->
-                    </li>
-                </ul>
-                </li>
-                </ul>
-                </form>
-            </div>
-        </div>
-    </nav>
-    <!-- Header loppuu -->
-<br>
-<!--Jyrin peli-->
-<h1 id="question">Missä tämän jätteen koti on?</h1>
+<body class="d-flex flex-column min-vh-100">
 
-<img id="item" src="banana.png" alt="item">
+  <!-- Header -->
+  <nav class="navbar navbar-expand-lg" style="background-color: #1f8e00;">
+    <div class="container-fluid">
+      <i class="bi bi-house-door-fill text-white me-2"></i>
+      <a class="navbar-brand text-white" href="etusivu.html">Kestävä kehitys</a>
 
-<div class="grid">
-  <img src="bio.png" onclick="checkAnswer('bio')">
-  <img src="plastic.png" onclick="checkAnswer('plastic')">
-  <img src="mixed.png" onclick="checkAnswer('mixed')">
-</div>
-<p id="result"></p>
-<div id="scoreBox">
-  <i class="bi bi-trophy-fill"></i>
-  <p id="score">Pisteet: 0</p>
-</div>
-<!--Pelin loppu-->
-    <!-- aleksin footer alkaa -->
-<footer class="text-lg-start" style="background-color: #1f8e00; padding: 1rem 0;"> <!-- footerin väri ja padding -->
-  <div class="container"> <!--keskittää ja rajaa-->
-    <div class="row align-items-center"> <!--kohdistaa kolumnit keskelle-->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-      <!-- Teksti -->
-      <div class="col-12 col-md-4">
-        <h6 class="text-uppercase fw-bold mb-1">Yhteyshenkilöt</h6>
-        <p>Aleksi Junttila</p>
-        <p>Jyri Holm</p>
-        <p>Sampsa Hanhela</p>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link text-white" href="infosivu.html"><i class="bi bi-question-circle-fill"></i> Infosivu</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="koostesivu.html"><i class="bi bi-trophy-fill"></i> Kooste</a>
+          </li>
+        </ul>
       </div>
-
-      <!-- Logo -->
-      <div class="col-12 col-md-4">
-        <img src="./img/logo.png"
-             class="img-fluid border rounded"
-             style="max-width: 140px;">
-      </div>
-
-      <!-- oamk logo -->
-      <div class="col-12 col-md-4">
-      <img src="./img/oamk.png"
-        class="img-fluid border rounded"
-        style="max-width: 140px;">
-      </div>
-
     </div>
-  </div>
-</footer>
+  </nav>
 
-    <!-- aleksin footer loppuu -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-        crossorigin="anonymous"></script> <!-- bootstrappiin liittyvä linkki, älä koske -->
+  <!-- Beli -->
+  <main class="flex-grow-1 d-flex align-items-center justify-content-center">
+    <div id="app" class="w-100" style="max-width: 520px;"></div>
+  </main>
+
+  <!-- Foot -->
+  <footer class="text-lg-start mt-auto" style="background-color: #1f8e00; padding: 1rem 0;">
+    <div class="container">
+      <div class="row align-items-center text-center text-md-start">
+
+        <div class="col-12 col-md-4">
+          <h6 class="text-uppercase fw-bold mb-1 text-white">Yhteyshenkilöt</h6>
+          <p class="text-white mb-1">Aleksi Junttila</p>
+          <p class="text-white mb-1">Jyri Holm</p>
+          <p class="text-white mb-1">Sampsa Hanhela</p>
+        </div>
+
+        <div class="col-12 col-md-4 text-center">
+          <img src="./img/logo.png" class="img-fluid border rounded" style="max-width: 140px;">
+        </div>
+
+        <div class="col-12 col-md-4 text-center">
+          <img src="./img/oamk.png" class="img-fluid border rounded" style="max-width: 140px;">
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+  <script src="jyrin_peli.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
-
 </html>

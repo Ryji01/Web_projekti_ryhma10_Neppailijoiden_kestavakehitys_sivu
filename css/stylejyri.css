@@ -1,44 +1,158 @@
-body {
-  text-align: center;
-  font-family: Arial, sans-serif;
-  background-image: -webkit-repeating-radial-gradient();
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --green: #1D9E75;
+  --green-dark: #0F6E56;
+  --green-bg: #EAF3DE;
+  --red: #D85A30;
+  --red-bg: #FCEBEB;
+  --bg: #F4F6F3;
+  --surface: #FFFFFF;
+  --text: #1C2620;
+  --text-muted: #6B7B72;
+  --border: rgba(0,0,0,.10);
+  --radius-md: 10px;
+  --radius-lg: 18px;
 }
 
-.grid {
+body {
+  font-family: 'Nunito', sans-serif;
+  background: var(--bg);
+  min-height: 100vh;
+  background-color: #1f8e00;
+  display: flex;
+  /*  keskitys */
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+ /*  hoveri ssetit, ei toimi mustaus, vitun bootstrap... */
+.navbar .nav-link:hover {
+  color: black;
+  transform: scale(1.10);
+}
+
+.navbar .navbar-brand {
+  color: white;
+  transition: all 0.2s ease;
+}
+
+.navbar .navbar-brand:hover {
+  color: black;
+  transform: scale(1.05);
+}
+
+
+#app {
+  width: 100%;
+  max-width: 520px;
+}
+
+
+.header { text-align: center; margin-bottom: 20px; }
+.header h1 { font-size: 28px; font-weight: 900; }
+.header p { font-size: 13px; color: var(--text-muted); }
+
+/* Heads up */
+.hud {
+  display: flex;
+  justify-content: space-between;
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  padding: 12px 20px;
+  margin-bottom: 12px;
+}
+
+.hud-block { text-align: center; }
+.hud-label { font-size: 11px; color: var(--text-muted); }
+.hud-value { font-size: 24px; font-weight: 900; }
+
+
+.progress-wrap {
+  height: 7px;
+  background: #D8E8D2;
+  border-radius: 99px;
+  overflow: hidden;
+  margin-bottom: 18px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--green);
+  transition: width .5s ease;
+}
+
+
+.waste-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.waste-card {
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 22px 36px;
+  text-align: center;
+}
+
+.waste-emoji { font-size: 58px; }
+.waste-name { font-size: 17px; font-weight: 700; }
+.waste-hint { font-size: 12px; color: var(--text-muted); }
+
+.feedback-msg {
+  font-size: 15px;
+  font-weight: 700;
+  min-height: 26px;
+  margin-top: 10px;
+}
+
+.feedback-msg.correct { color: var(--green); }
+.feedback-msg.wrong { color: var(--red); }
+
+
+.bins-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  max-width: 600px;
-  margin: 20px auto;
+  gap: 10px;
+  margin-top: 20px;
 }
 
-.grid img {
-  width: 100%;
-  cursor: pointer;
-  border: 3px solid transparent;
-  transition: 0.2s;
-}
-
-.grid img:hover {
-  border-color: #1f8e00;
-}
-
-#scoreBox {
-  display: inline-flex;
+.bin-btn {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 8px;
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 14px;
+  cursor: pointer;
 }
 
-#score {
-  margin: 0; /* poista oletus marginit */
+.bin-btn:hover { transform: translateY(-4px); }
+
+.bin-icon { font-size: 30px; }
+.bin-dot { width: 10px; height: 10px; border-radius: 50%; }
+.bin-label { font-size: 12px; font-weight: 700; }
+
+
+.end-screen {
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  padding: 32px 24px;
+  text-align: center;
 }
 
-h1 {
-  font-size: 2.5rem;
-  color: white; /* teksti näkyy selvästi */
-  background: linear-gradient(90deg, #1f8e00, #4caf50); /* laatikko */
-  display: inline-block;
-  padding: 10px 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+.end-score { font-size: 58px; font-weight: 900; color: var(--green); }
+
+.btn-restart {
+  background: var(--green);
+  color: white;
+  border: none;
+  padding: 12px 32px;
+  font-weight: 700;
+  cursor: pointer;
 }
