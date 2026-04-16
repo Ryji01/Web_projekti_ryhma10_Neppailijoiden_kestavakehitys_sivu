@@ -54,7 +54,7 @@ function endGame() {
 
   document.getElementById('app').innerHTML = `
     <div class="end-screen">
-      <h2>Loistavaa!</h2>
+      <h2>Pisteet:</h2>
       <div class="end-score">${state.score}</div>
       <div>Väärin: ${state.wrong}</div>
       <button class="btn-restart" onclick="startGame()">Uudelleen</button>
@@ -96,7 +96,6 @@ function render() {
       ${BINS.map(b => `
         <button class="bin-btn" onclick="choose('${b.id}')">
           <span class="bin-icon">${b.icon}</span>
-          <span class="bin-dot" style="background:${b.dot}"></span>
           <span class="bin-label">${b.label}</span>
         </button>
       `).join('')}
