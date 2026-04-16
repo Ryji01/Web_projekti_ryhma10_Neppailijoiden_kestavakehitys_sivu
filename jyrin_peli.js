@@ -1,10 +1,11 @@
+// Lista tavaroista mitä pelaaja lajittelee, jokaiselle jätteelle oma roskis = bin.
 const BINS = [
-  { id: 'bio', label: 'Biojäte', icon: '🌳'},
-  { id: 'paper', label: 'Paperi', icon: '📃'},
-  { id: 'plastic', label: 'Muovi', icon: '💿'},
-  { id: 'glass', label: 'Lasi', icon: '🍸'},
-  { id: 'metal', label: 'Metalli', icon: '🔩'},
-  { id: 'mixed', label: 'Sekajäte', icon: '♻️'},
+  { id: 'bio', label: 'Biojäte', icon: '🌳' },
+  { id: 'paper', label: 'Paperi', icon: '📃' },
+  { id: 'plastic', label: 'Muovi', icon: '💿' },
+  { id: 'glass', label: 'Lasi', icon: '🍸' },
+  { id: 'metal', label: 'Metalli', icon: '🔩' },
+  { id: 'mixed', label: 'Sekajäte', icon: '♻️' },
 ];
 
 const WASTE_ITEMS = [
@@ -15,20 +16,20 @@ const WASTE_ITEMS = [
   { name: 'Säilyketölkki', emoji: '🥫', bin: 'metal' },
   { name: 'Vaippa', emoji: '👶', bin: 'mixed' },
 ];
-
+// Seurataan monesko jäte menossa, oikeat vastaukset ja väärät vastaukset.
 let state = {
   current: 0,
   score: 0,
   wrong: 0
 };
-
+// Nollaa pisteet, aloittaa pelin alusta ja kutsuu render fuctiota.
 function startGame() {
   state.current = 0;
   state.score = 0;
   state.wrong = 0;
   render();
 }
-
+// Hakee painetun jätteen, lisää pisteet, kun kaikki käyty kutsuu endgame.
 function choose(binId) {
   const item = WASTE_ITEMS[state.current];
 
@@ -46,9 +47,8 @@ function choose(binId) {
     render();
   }
 }
-
+// Tallentaa tuloksen localstorageen ja näyttää lopputuloksen pelistä.
 function endGame() {
-    // Bisteiden tallennus
   localStorage.setItem("kierratys_score", state.score);
   localStorage.setItem("kierratys_wrong", state.wrong);
 
@@ -61,7 +61,7 @@ function endGame() {
     </div>
   `;
 }
-
+// Näyttää käyttöliittymän innerhtml.
 function render() {
   const item = WASTE_ITEMS[state.current];
 
