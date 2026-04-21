@@ -1,5 +1,6 @@
 const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
+let highScore = localStorage.getItem("highScore") || 0;
 
 // kierrätettävät
 const goodIcons = [
@@ -59,14 +60,19 @@ const deleteZone = {
 function drawScore() {
     ctx.textAlign = "left";
     ctx.textBaseline = "alphabetic";
-    ctx.shadowColor = "transparent";
-    ctx.shadowBlur = 0;
+
+    ctx.shadowColor = "black";
+    ctx.shadowBlur = 4;
     ctx.shadowOffsetX = 0;
     ctx.shadowOffsetY = 0;
+
     ctx.fillStyle = "white";
     ctx.font = "20px Arial";
-    ctx.fillText("Score: " + score, 20, canvas.height - 20);
+
+    ctx.fillText("Pisteet: " + score, 20, canvas.height - 45);
+    ctx.fillText("Korkein tulos: " + highScore, 20, canvas.height - 20);
 }
+
 // Spawn square
 function spawnSquare() {
     // Avoid initial trajectories that are too close to straight down.
@@ -205,6 +211,12 @@ function startGame() {
 }
 function endGame() {
     gameState = "gameOver"
+    
+    if (score > highScore) {
+        highScore = score;
+        localStorage.setItem("highScore", highScore);
+    }
+
 }
 canvas.addEventListener("mousedown", (e) => {
     if (gameState === "gameOver") {
@@ -217,7 +229,7 @@ canvas.addEventListener("mousedown", (e) => {
     const mouseX = e.clientX - rect.left;
     const mouseY = e.clientY - rect.top;
 
-    // box dimensions (same as draw code!)
+    // box dimensions
     const boxX = canvas.width * 1/6;
     const boxY = canvas.height / 3;
     const boxW = canvas.width * 4/6;
@@ -259,11 +271,13 @@ function loop() {
         ctx.textAlign = "center";
 
         ctx.font = "40px Arial";
-        ctx.fillText("Recycling Game", canvas.width / 2, canvas.height / 2 - 40);
+        ctx.fillText("Roskat Hukassa!", canvas.width / 2, canvas.height / 2 - 70);
 
         ctx.font = "20px Arial";
-        ctx.fillText("Drag recyclable items into the bin", canvas.width / 2, canvas.height / 2);
-        ctx.fillText("Click to Start", canvas.width / 2, canvas.height / 2 + 40);
+        ctx.fillText("Nappaa lentävät roskat ja", canvas.width / 2, canvas.height / 2 - 20);
+        ctx.fillText("lajittele polttokelpoiset roskiin", canvas.width / 2, canvas.height / 2 + 5);
+        ctx.font = "30px Arial";        
+        ctx.fillText("Paina aloittaaksesi!", canvas.width / 2, canvas.height / 2 + 80);
         
         requestAnimationFrame(loop);
         return;        
@@ -292,12 +306,14 @@ function loop() {
         ctx.textAlign = "center";
 
         ctx.font = "40px Arial";
-        ctx.fillText("Recycling Game", canvas.width / 2, canvas.height / 2 - 40);
+        ctx.fillText("Roskat Hukassa!", canvas.width / 2, canvas.height / 2 - 80);
 
-        ctx.font = "20px Arial";
-        ctx.fillText("Game over", canvas.width / 2, canvas.height / 2);
-        ctx.fillText("click to re-Start", canvas.width / 2, canvas.height / 2 + 40);
-        ctx.fillText("Score: " + score, canvas.width / 2, canvas.height / 2 + 80);
+        ctx.font = "30px Arial";
+        ctx.fillText("Peli Ohi!", canvas.width / 2, canvas.height / 2 - 20);
+        ctx.font = "20px Arial";        
+        ctx.fillText("Pisteet: " + score, canvas.width / 2, canvas.height / 2 + 20);
+        ctx.fillText("Ennätys: " + highScore, canvas.width / 2, canvas.height / 2 + 40); 
+        ctx.fillText("Paina uudelleen aloittaaksesi", canvas.width / 2, canvas.height / 2 + 80);       
 
         requestAnimationFrame(loop);
         return;
@@ -313,7 +329,10 @@ function loop() {
     // Clear whole canvas (simpler with UI elements)
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    drawScore();
+    if (gameState === "playing" && gameState !== "gameOver") {
+        drawScore();
+    }
+
 
     squares = squares.filter(onScreen);
 
