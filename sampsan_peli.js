@@ -21,10 +21,10 @@ const DOWN_BLOCK_ARC = Math.PI / 8; // block angle
 const TRASH_HOVER_SCALE = 1.12;
 const TRASH_SCALE_LERP = 0.2;
 const trashOpenImg = new Image();
-trashOpenImg.src = "./img/trashOpen.png";
+trashOpenImg.src = "sPeli/trashOpen.png";
 
 const trashCanImg = new Image();
-trashCanImg.src = "./img/trashCan.png";
+trashCanImg.src = "sPeli/trashCan.png";
 
 function emojiFontPx(sq) {
     return Math.floor(Math.min(sq.w, sq.h) * ICON_FONT_FRAC);
