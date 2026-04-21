@@ -2,10 +2,21 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  background-image: url(../img/tausta.png);
+  background-size: 20em;
 }
 
 
-/* Painaa footerin alas? */
-main {
-  flex: 1;
+.content {
+    background-color: #B0CE88;
+    width: 80%;
+    margin: 0 auto;
+    padding: 1px;
+    box-shadow: inset 0px 0px 5px 1px #4C763B;
+    min-height: 72vh;
 }
+.content p, h1, a {
+  text-align: center;
+}
+
+
