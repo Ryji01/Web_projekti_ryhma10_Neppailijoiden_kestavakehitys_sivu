@@ -1,10 +1,12 @@
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background-image: url(../img/tausta.png);
+  background-size: 20em;
 }
 canvas {
-    border: 1px solid black;
-    background-image: url(../sPeli/gameBackground.png);
-    background-size: cover;
+  display: block;
+  margin: 0 auto;
+  padding: 0px;
+  border: 1px solid black;
+  background-image: url(../sPeli/gameBackground.png);
+  background-size: cover;
 }
