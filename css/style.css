@@ -35,7 +35,7 @@ body {
 }
 
 .col h1 {
-    font-size: 24px;
+    font-size: 32px;
     transition: 0.2s ease;
 }
 
@@ -45,7 +45,7 @@ body {
 }
 
 .col img {
-    height: 100px;
+    height: 130px;
     transition: 0.2s ease;
 
 }
@@ -61,13 +61,27 @@ body {
 }
 
 .col:hover img {
-    height: 130px;
+    height: 140px;
 
 }
 
 .content {
     text-align: center;
 }
+
+.card-link {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+}
+
+
+
 
 /* sisällön muokkauksen loppu */
 

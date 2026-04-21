@@ -40,16 +40,24 @@
 
   <div class="content">
     <br>
-    <h1>Kierrätyspelin tulokset:</h1>
-    <p>Pisteet: <span id="jyriscore"></span></p>
-    <p>Väärin: <span id="jyriwrong"></span></p>
+      <h1>Kierrätyspelin tulokset:</h1>
+      <a href="jyrin_peli.html"><img src="./img/lehti.png" alt="jyrin peli"></a>     
+      <p>Pisteet: <span id="jyriscore"></span></p>
+      <p>Väärin: <span id="jyriwrong"></span></p>
+    <br>
+      <h1>Hyvä vai huono teko? tulokset:</h1>
+      <a href="aleksin_peli.html"><img src="./img/tehdas.png" alt="aleksin peli"></a>
+      <p>Pisteet: asd<span id=""></span>/x</p>
 
-    <h1>Hyvä vai huono teko? tulokset:</h1>
-    <p>Pisteet: asd<span id=""></span>/x</p>
-    <h1>Roskat Hukassa pelin tulokset:</h1>
-    <p>Pisteet: <span id="highScore"></span>/20</p>  
+    <br>
+      <h1>Roskat Hukassa pelin tulokset:</h1>
+      <a href="sampsan_peli.html"><img src="./img/roska.png" alt="sampsan peli"></a>   
+      <p>Pisteet: <span id="highScore"></span>/20</p> 
   </div>
 
+
+
+  <!-- local storage -->
   <script>
     document.getElementById("jyriscore").textContent = localStorage.getItem("kierratys_score");
     document.getElementById("jyriwrong").textContent = localStorage.getItem("kierratys_wrong");
@@ -57,7 +65,8 @@
   </script>
 
 
-<footer class="text-lg-start mt-auto" style="background-color: #468432; padding: 1rem 0;"> <!-- footerin väri ja padding -->
+<!-- footer -->
+<footer class="text-lg-start mt-auto" style="background-color: #468432; padding: 1rem 0;"> 
   <div class="container"> <!--keskittää ja rajaa-->
     <div class="row align-items-center"> <!--kohdistaa kolumnit keskelle-->
 

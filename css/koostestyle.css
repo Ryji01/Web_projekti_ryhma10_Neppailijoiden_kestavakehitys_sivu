@@ -11,12 +11,31 @@ body {
     background-color: #B0CE88;
     width: 80%;
     margin: 0 auto;
-    padding: 1px;
+    padding: 5px;
     box-shadow: inset 0px 0px 5px 1px #4C763B;
     min-height: 72vh;
-}
-.content p, h1, a {
-  text-align: center;
+    text-align: center;
 }
 
+.content p {
+  font-size: 20px;
+}
 
+.content img {
+  max-width: 120px;
+  height: auto;
+
+  display: block;
+  margin: 0 auto;
+}
+
+.content a {
+  display: inline-block;
+  width: fit-content;
+  margin: 0 auto;
+  transition: 0.2s ease;
+}
+
+.content a:hover {
+  scale: 1.1;
+}
