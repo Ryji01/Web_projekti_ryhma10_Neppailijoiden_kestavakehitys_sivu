@@ -47,7 +47,7 @@
     <br>
       <h1>Hyvä vai huono teko? tulokset:</h1>
       <a href="aleksin_peli.html"><img src="./img/tehdas.png" alt="aleksin peli"></a>
-      <p>Pisteet: asd<span id=""></span>/x</p>
+      <p>Pisteet: <span id="aleksiscore"></span> / <span id="aleksitotal"></span></p>
 
     <br>
       <h1>Roskat Hukassa pelin tulokset:</h1>
@@ -61,8 +61,11 @@
   <script>
     document.getElementById("jyriscore").textContent = localStorage.getItem("kierratys_score");
     document.getElementById("jyriwrong").textContent = localStorage.getItem("kierratys_wrong");
+    document.getElementById("aleksiscore").textContent = localStorage.getItem("aleksi_score");
+    document.getElementById("aleksitotal").textContent = localStorage.getItem("aleksi_total");
     document.getElementById("highScore").textContent = localStorage.getItem("highScore");   
   </script>
+
 
 
 <!-- footer -->

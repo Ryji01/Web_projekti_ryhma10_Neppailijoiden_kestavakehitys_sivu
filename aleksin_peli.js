@@ -57,6 +57,10 @@ function nextQuestion() {
 
         document.querySelector(".btn-success").style.display = "none";
         document.querySelector(".btn-danger").style.display = "none";
+
+        localStorage.setItem("aleksi_score", score);
+        localStorage.setItem("aleksi_total", questions.length);
+    
     }
 }
 
