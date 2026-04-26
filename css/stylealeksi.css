@@ -1,0 +1,20 @@
+#game-box {
+    background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+    border-radius: 20px;
+    padding: 30px;
+    max-width: 700px;
+    margin: auto;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+body {
+    background-image: url("../img/tausta.png");
+    background-size: 20em;
+ 
+}
+
+
+#question {
+    font-size: 1.5rem;
+    margin-top: 10px;
+}
