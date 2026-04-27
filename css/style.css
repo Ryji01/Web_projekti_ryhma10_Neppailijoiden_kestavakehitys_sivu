@@ -25,7 +25,7 @@ body {
     background-color: #F7C85C;
     border: 1px solid #7FB77E;
     height: 300px; 
-    border-radius: 3px;
+    border-radius: 10px;
     transition: 0.2s ease;
 }
 

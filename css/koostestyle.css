@@ -17,6 +17,9 @@ body {
     text-align: center;
 }
 
+.content h1 {
+  font-size: 30px;
+}
 .content p {
   font-size: 20px;
 }
@@ -39,3 +42,4 @@ body {
 .content a:hover {
   scale: 1.1;
 }
+
